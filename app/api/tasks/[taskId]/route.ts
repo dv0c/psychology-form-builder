@@ -10,5 +10,6 @@ export async function GET(res: Response, { params }: { params: { taskId: string 
     },
   });
 
+    if (!_$) return NextResponse.json("error");
   return NextResponse.json(_$);
 }
