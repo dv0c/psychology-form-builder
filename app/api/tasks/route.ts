@@ -1,5 +1,7 @@
 import prisma from "@/lib/prisma";
+import { NextResponse } from "next/server";
 
 export async function GET(res:Response) {
-    return await prisma.form.findMany()
+    const tasks = await prisma.form.findMany()
+    return NextResponse.json(tasks)
 }
