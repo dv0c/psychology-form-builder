@@ -1,10 +1,12 @@
 import prisma from "@/lib/prisma";
 import { NextResponse } from "next/server";
 
-export async function GET(res: Response, params: { id: string }) {
-  const _$ = await prisma.form.findFirst({
+export async function GET(res: Response, { params }: { params: { taskId: string } }) {
+  if (!params?.taskId) return NextResponse.json("error");
+        
+  const _$ = await prisma.form.findUnique({
     where: {
-      id: params.id,
+      shareURL: params.taskId,
     },
   });
 
